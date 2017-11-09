@@ -256,7 +256,7 @@ Utilize esse serviço para buscar todas as cidades de um determinado estado, pas
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'health-units-cities/SE';
+$url = 'health-units-cities/se';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -279,6 +279,51 @@ Parâmetro | Tipo | Obrigatório | Descrição
 uf | String | Sim | Sigla do estado (ex. BA)
 
 ## Busca de Bairros
+
+Utilize esse serviço para buscar todOs os bairros de uma determinada cidade, passada por parâmetro, onde existem credenciados.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'health-units-neighborhoods/se/aracaju';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+  {
+    "neighborhood": "CENTRO"
+  },
+  {
+    "neighborhood": "JARDINS"
+  },
+  {
+    "neighborhood": "SANTO ANTÔNIO"
+  },
+  {
+    "neighborhood": "SÃO JOSÉ"
+  },
+  {
+    "neighborhood": "TREZE DE JULHO"
+  }
+]
+```
+
+`GET https://api.meutem.dev/health-units-neighborhoods/[uf]/[cidade]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+uf | String | Sim | Sigla do estado (ex. BA)
+cidade | String | Sim | Nome da cidade
+
 
 ## Busca por Filtro
 
