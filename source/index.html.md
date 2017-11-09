@@ -105,7 +105,6 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 id | Number | Sim | O ID do credenciado a ser obtido
 
-
 ## Busca por Palavra-chave
 
 ```php
