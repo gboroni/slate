@@ -105,6 +105,75 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 id | Number | Sim | O ID do credenciado a ser obtido
 
+## Busca por Filtro
+
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$parametros = [
+                'specialties'  => 1,
+                'state'        => 'se',
+                'city'         => 'aracaju',
+                'neighborhood' => 'centro'
+              ];
+$url = 'health-units/search-units-filter/20/0?' . http_build_query($parametros);
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+  "data": [
+    {
+      "DT_RowId": "1",
+      "id": "1",
+      "specialty": "ALERGIA E IMUNOLOGIA",
+      "name": "Exemplo 1",
+      "city": "ARACAJU",
+      "neighborhood": "CENTRO",
+      "state": "SE",
+      "zone": "SE - Capital"
+    },
+    {
+      "DT_RowId": "2",
+      "id": "2",
+      "specialty": "ALERGIA E IMUNOLOGIA",
+      "name": "Exemplo 2",
+      "city": "ARACAJU",
+      "neighborhood": "CENTRO",
+      "state": "SE",
+      "zone": "SE - Capital"
+    }
+  ]
+}
+```
+
+Utilize esse serviço para buscar todos os credenciados a partir de filtro construído.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/health-units/search-units/[limit]/[offset]?specialties=[especialidade_id]&state=[uf]&city=[cidade]&neighborhood=[bairro]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+limit | Number | Sim | Limite para a pesquisa (max: 50)
+offset | String | Sim | Offset para a pesquisa
+
+### Parâmetros de Consulta
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+especialidade_id | Number | Não | Id da especialidade desejada
+uf | String | Não | Sigla do estado (ex. BA)
+cidade | String | Não | Nome da cidade
+bairro | String | Não | Nome do bairro
+
 ## Busca por Palavra-chave
 
 ```php
@@ -112,7 +181,7 @@ id | Number | Sim | O ID do credenciado a ser obtido
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'health-units/search-units/2/0?parameters=aracaju';
+$url = 'health-units/search-units/20/0?parameters=aracaju';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -167,7 +236,6 @@ offset | String | Sim | Offset para a pesquisa
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 parameters | String | Sim | Palavra-chave que filtra nome, especialidade, bairro, cidade, uf ou zona
-
 
 ## Busca de Especialidades
 
@@ -323,9 +391,6 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 uf | String | Sim | Sigla do estado (ex. BA)
 cidade | String | Sim | Nome da cidade
-
-
-## Busca por Filtro
 
 
 # Example
@@ -509,7 +574,7 @@ define('API_ENDPOINT', 'http://api.meutem.dev/');
 define('API_TRANSACTION_KEY', 'http://api.meutem.dev/');
 $url = 'health-unit/1';
 
-$param = array( 'Accept' => 'application/json'
+$param = array( 'Accept'          => 'application/json'
               , 'Transaction-key' => API_TRANSACTION_KEY);
 
 $result = Requests::get(API_ENDPOINT . $url, $param, $data);
