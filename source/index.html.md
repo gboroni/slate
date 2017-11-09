@@ -1,73 +1,196 @@
 ---
-title: API Reference
+title: API de Serviços TEM
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - php
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
+  - <a href='https://meutem.com.br'>Documentation Produzida por Tem.</a>
 
 search: true
 ---
 
-# Introduction
+# Introdução
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Esse documento tem como finalidade descrever os serviços que compoem a API de Serviços da TEM assim como suas respostas.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# Autenticação
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+A API trabalha apenas com os métodos GET e POST e sua utilização está condicionada a informar uma chave válida, por meio do parâmetro Transaction-key, de 50 caracteres.
 
-# Authentication
+`Transaction-key: njRRmvsxpZ******************************s7rbscHNmL`
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+<aside class="info">
+A API disponibiliza publicamente todas as requisições excetos as relacionadas abaixo:
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </aside>
 
-# Kittens
 
-## Get All Kittens
+## POST
+
+# Credenciados
+
+## Obter Detalhes
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'health-unit/1';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado assim:
+
+```json
+{
+  "id": "1",
+  "type": "CLINICA",
+  "name": "CLINICA EXEMPLO",
+  "cpf_cnpj": "99999999999999",
+  "telephone_1": "(99) 9999-9999",
+  "telephone_2": "(99) 99999-9999",
+  "email": "CLINICAEXEMPLO@GMAIL.COM",
+  "rede": "TEM",
+  "is_active": "1",
+  "created_at": "2017-06-29 09:32:31",
+  "updated_at": "2017-07-05 09:32:30",
+  "deleted_at": null,
+  "postal_code": "99999-999",
+  "latitude": null,
+  "longitude": null,
+  "specialties": [
+    {
+      "id": "3",
+      "name": "DERMATOLOGIA",
+      "created_at": "2016-02-15 01:29:14",
+      "updated_at": null,
+      "deleted_At": null
+    },
+    {
+      "id": "5",
+      "name": "CLINICA MEDICA",
+      "created_at": "2016-02-15 01:29:14",
+      "updated_at": null,
+      "deleted_At": null
+    },
+    {
+      "id": "6",
+      "name": "GASTROENTEROLOGIA",
+      "created_at": "2016-02-15 01:29:14",
+      "updated_at": null,
+      "deleted_At": null
+    }
+  ]
+}
+```
+
+Utilize esse serviço para buscar detalhes de um determinado credenciado.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/health-unit/[ID]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Descrição
+--------- | ---- | ---------
+ID | Number | O ID do credenciado a ser obtido
+
+
+## Busca por Palavra-chave
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'search-units/<LIMIT>/<OFFSET>?parameters=1PARAMETERS
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado assim:
+
+```json
+{
+  "id": "1",
+  "type": "CLINICA",
+  "name": "CLINICA EXEMPLO",
+  "cpf_cnpj": "99999999999999",
+  "telephone_1": "(99) 9999-9999",
+  "telephone_2": "(99) 99999-9999",
+  "email": "CLINICAEXEMPLO@GMAIL.COM",
+  "rede": "TEM",
+  "is_active": "1",
+  "created_at": "2017-06-29 09:32:31",
+  "updated_at": "2017-07-05 09:32:30",
+  "deleted_at": null,
+  "postal_code": "99999-999",
+  "latitude": null,
+  "longitude": null,
+  "specialties": [
+    {
+      "id": "3",
+      "name": "DERMATOLOGIA",
+      "created_at": "2016-02-15 01:29:14",
+      "updated_at": null,
+      "deleted_At": null
+    },
+    {
+      "id": "5",
+      "name": "CLINICA MEDICA",
+      "created_at": "2016-02-15 01:29:14",
+      "updated_at": null,
+      "deleted_At": null
+    },
+    {
+      "id": "6",
+      "name": "GASTROENTEROLOGIA",
+      "created_at": "2016-02-15 01:29:14",
+      "updated_at": null,
+      "deleted_At": null
+    }
+  ]
+}
+```
+
+Utilize esse serviço para buscar detalhes de um determinado credenciado.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/search-units/<LIMIT>/<OFFSET>?parameters=<PARAMETERS>`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Descrição
+--------- | ---- | -----------
+Limit | Number | Limite para a pesquisa (max: 50)
+Offset | String | Offset para a pesquisa
+
+
+
+## Busca de Especialidades
+
+## Busca de Estados
+
+## Busca de Cidades
+
+## Busca de Bairros
+
+## Busca por Filtro
+
+
+# Example
+
+## TODO
 
 ```ruby
 require 'kittn'
@@ -237,3 +360,17 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
 
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+define('API_TRANSACTION_KEY', 'http://api.meutem.dev/');
+$url = 'health-unit/1';
+
+$param = array( 'Accept' => 'application/json'
+              , 'Transaction-key' => API_TRANSACTION_KEY);
+
+$result = Requests::get(API_ENDPOINT . $url, $param, $data);
+```
