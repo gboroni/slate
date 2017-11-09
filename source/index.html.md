@@ -97,13 +97,13 @@ Utilize esse serviço para buscar detalhes de um determinado credenciado.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/health-unit/[ID]`
+`GET https://api.meutem.dev/health-unit/[id]`
 
 ### Parâmetros de URL
 
-Parâmetro | Tipo | Descrição
---------- | ---- | ---------
-ID | Number | O ID do credenciado a ser obtido
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+id | Number | Sim | O ID do credenciado a ser obtido
 
 
 ## Busca por Palavra-chave
@@ -113,7 +113,7 @@ ID | Number | O ID do credenciado a ser obtido
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'search-units/<LIMIT>/<OFFSET>?parameters=1PARAMETERS
+$url = 'health-units/search-units/2/0?parameters=aracaju';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -121,63 +121,95 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 ```json
 {
-  "id": "1",
-  "type": "CLINICA",
-  "name": "CLINICA EXEMPLO",
-  "cpf_cnpj": "99999999999999",
-  "telephone_1": "(99) 9999-9999",
-  "telephone_2": "(99) 99999-9999",
-  "email": "CLINICAEXEMPLO@GMAIL.COM",
-  "rede": "TEM",
-  "is_active": "1",
-  "created_at": "2017-06-29 09:32:31",
-  "updated_at": "2017-07-05 09:32:30",
-  "deleted_at": null,
-  "postal_code": "99999-999",
-  "latitude": null,
-  "longitude": null,
-  "specialties": [
+  "data": [
     {
-      "id": "3",
-      "name": "DERMATOLOGIA",
-      "created_at": "2016-02-15 01:29:14",
-      "updated_at": null,
-      "deleted_At": null
+      "DT_RowId": "1",
+      "id": "1",
+      "specialty": "AUDIOMETRIA",
+      "name": "EXEMPLO 1",
+      "city": "ARACAJU",
+      "neighborhood": "SÃO JOSÉ",
+      "state": "SE",
+      "zone": "",
+      "latitude": "-10.91892210",
+      "longitude": "-37.05267520"
     },
     {
-      "id": "5",
-      "name": "CLINICA MEDICA",
-      "created_at": "2016-02-15 01:29:14",
-      "updated_at": null,
-      "deleted_At": null
-    },
-    {
-      "id": "6",
-      "name": "GASTROENTEROLOGIA",
-      "created_at": "2016-02-15 01:29:14",
-      "updated_at": null,
-      "deleted_At": null
+      "DT_RowId": "2",
+      "id": "2",
+      "specialty": "COLONOSCOPIA",
+      "name": "EXEMPLO 2",
+      "city": "ARACAJU",
+      "neighborhood": "SÃO JOSÉ",
+      "state": "SE",
+      "zone": "SE - Capital",
+      "latitude": "-10.91922000",
+      "longitude": "-37.05157170"
     }
   ]
 }
 ```
 
-Utilize esse serviço para buscar detalhes de um determinado credenciado.
+Utilize esse serviço para buscar todos os credenciados a partir de uma palavra-chave passada como parâmetro de consulta.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/search-units/<LIMIT>/<OFFSET>?parameters=<PARAMETERS>`
+`GET https://api.meutem.dev/health-units/search-units/[limit]/[offset]?parameters=[parameters]`
 
 ### Parâmetros de URL
 
-Parâmetro | Tipo | Descrição
---------- | ---- | -----------
-Limit | Number | Limite para a pesquisa (max: 50)
-Offset | String | Offset para a pesquisa
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+limit | Number | Sim | Limite para a pesquisa (max: 50)
+offset | String | Sim | Offset para a pesquisa
 
+### Parâmetros de Consulta
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+parameters | String | Sim | Palavra-chave que filtra nome, especialidade, bairro, cidade, uf ou zona
 
 
 ## Busca de Especialidades
+
+Utilize esse serviço para buscar todas as especialidades dos
+credenciados cadastrados
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'health-units-specialties';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado assim:
+
+```json
+[
+  {
+    "name": "ACUIDADE VISUAL",
+    "id": "545"
+  },
+  {
+    "name": "ACUPUNTURA",
+    "id": "21"
+  },
+  {
+    "name": "VIDEOLAPAROSCOPIA",
+    "id": "470"
+  },
+  {
+    "name": "VIDEOLARINGOSCOPIA",
+    "id": "391"
+  }
+]
+```
+
+`GET https://api.meutem.dev/health-units-specialties`
 
 ## Busca de Estados
 
