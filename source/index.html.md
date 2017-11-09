@@ -48,7 +48,7 @@ $url = 'health-unit/1';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
-> O comando acima retorna um JSON estruturado assim:
+> O comando acima retorna um JSON estruturado conforme exemplo:
 
 ```json
 {
@@ -116,7 +116,7 @@ $url = 'health-units/search-units/2/0?parameters=aracaju';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
-> O comando acima retorna um JSON estruturado assim:
+> O comando acima retorna um JSON estruturado conforme exemplo:
 
 ```json
 {
@@ -171,8 +171,7 @@ parameters | String | Sim | Palavra-chave que filtra nome, especialidade, bairro
 
 ## Busca de Especialidades
 
-Utilize esse serviço para buscar todas as especialidades dos
-credenciados cadastrados
+Utilize esse serviço para buscar todas as especialidades dos credenciados cadastrados
 
 ### Requisição HTTP
 
@@ -185,7 +184,7 @@ $url = 'health-units-specialties';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
-> O comando acima retorna um JSON estruturado assim:
+> O comando acima retorna um JSON estruturado conforme exemplo:
 
 ```json
 [
@@ -212,7 +211,72 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 ## Busca de Estados
 
+Utilize esse serviço para buscar todos os estados onde existem credenciados.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'health-units-states';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+  {
+    "state": "AC"
+  },
+  {
+    "state": "AL"
+  },
+  {
+    "state": "SP"
+  },
+  {
+    "state": "TO"
+  }
+]
+```
+
+`GET https://api.meutem.dev/health-units-states`
+
 ## Busca de Cidades
+
+Utilize esse serviço para buscar todas as cidades de um determinado estado, passado por parâmetro, onde existem credenciados.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'health-units-cities/SE';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+  {
+    "city": "ARACAJU"
+  }
+]
+```
+
+`GET https://api.meutem.dev/health-units-cities/[uf]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+uf | String | Sim | Sigla do estado (ex. BA)
 
 ## Busca de Bairros
 
