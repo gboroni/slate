@@ -729,6 +729,352 @@ city | String | Sim | Nome da cidade
 A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
 </aside>
 
+# Clientes
+
+## Obter Detalhes
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'client/1';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "id": "1",
+    "cpf": "123.45.789-09",
+    "name": "Exemplo",
+    "email": "exemplote@exemplo.com.br",
+    "rg": "123456789",
+    "other_document": null,
+    "birthdate": "01/01/1900",
+    "telephone_1": "(99) 99999-9999",
+    "telephone_2": "(99) 9999-9999",
+    "gender": "feminino",
+    "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
+    "addresses_id_fk": "55",
+    "has_access": "0",
+    "forgot_token": null,
+    "imported": null,
+    "created_at": "2015-05-04 14:54:46",
+    "deleted_at": null,
+    "updated_at": null,
+    "address": {
+        "id": "1",
+        "postal_code": "99999-999",
+        "address": "Rua Exemplo",
+        "number": "123",
+        "complement": "apto 123",
+        "neighborhood": "Centro",
+        "city": "Aracaju",
+        "state": "SE",
+        "latitude": null,
+        "longitude": null,
+        "created_at": "2015-05-04 14:54:46",
+        "updated_at": null,
+        "deleted_at": null
+    }
+}
+```
+
+Utilize esse serviço para buscar detalhes de uma determinado cliente.
+
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/client/[id]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+id | Number | Sim | O ID do cliente a ser obtido
+
+<aside class="warning">
+A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+</aside>
+
+## Busca por Filtro
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$parametros = [
+                'state'        => 'se',
+                'city'         => 'aracaju',
+                'neighborhood' => 'centro'
+              ];
+$url = 'drugstores/search-units-filter/20/0?' . http_build_query($parametros);
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "data": [
+        {
+            "DT_RowId": "1",
+            "id": "1",
+            "name": "CLIENTE EXEMPLO",
+            "address": "R. EXEMPLO",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91109890",
+            "longitude": "-37.04995800",
+            "created_at": "2017-10-04 08:00:02"
+        },
+        {
+            "DT_RowId": "2",
+            "id": "2",
+            "name": "CLIENTE EXEMPLO 2",
+            "address": "AV. EXEMPLO 2",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91849890",
+            "longitude": "-37.05105620",
+            "created_at": "2017-10-04 08:00:07"
+        }
+    ]
+}
+```
+
+Utilize esse serviço para buscar todos os clientes a partir de filtro construído.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/drugstores/search-units-filter/[limit]/[offset]?state=[state]&city=[city]&neighborhood=[neighborhood]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+limit | Number | Sim | Limite para a pesquisa (max: 50)
+offset | String | Sim | Offset para a pesquisa
+
+### Parâmetros de Consulta
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+state | String | Não | Sigla do estado (ex. BA)
+city | String | Não | Nome da cidade
+neighborhood | String | Não | Nome do bairro
+
+<aside class="warning">
+A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+</aside>
+
+## Busca por Palavra-chave
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'drugstores/search-units/20/0?parameters=aracaju';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "data": [
+        {
+            "DT_RowId": "1",
+            "id": "1",
+            "name": "CLIENTE EXEMPLO",
+            "address": "R. EXEMPLO",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91109890",
+            "longitude": "-37.04995800",
+            "created_at": "2017-10-04 08:00:02"
+        },
+        {
+            "DT_RowId": "2",
+            "id": "2",
+            "name": "CLIENTE EXEMPLO 2",
+            "address": "AV. EXEMPLO 2",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91849890",
+            "longitude": "-37.05105620",
+            "created_at": "2017-10-04 08:00:07"
+        }
+    ]
+}
+```
+
+Utilize esse serviço para buscar todos os clientes a partir de uma palavra-chave passada como parâmetro de consulta.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/drugstores/search-units/[limit]/[offset]?parameters=[parameters]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+limit | Number | Sim | Limite para a pesquisa (max: 50)
+offset | String | Sim | Offset para a pesquisa
+
+### Parâmetros de Consulta
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+parameters | String | Sim | Palavra-chave que filtra nome, bairro, cidade, uf ou zona
+
+<aside class="warning">
+A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+</aside>
+
+## Busca de Estados
+
+Utilize esse serviço para buscar todos os estados onde existem credenciados.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'drugstores-states';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+  {
+    "state": "AC"
+  },
+  {
+    "state": "AL"
+  },
+  {
+    "state": "SP"
+  },
+  {
+    "state": "TO"
+  }
+]
+```
+
+`GET https://api.meutem.dev/drugstores-states`
+
+<aside class="warning">
+A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+</aside>
+
+## Busca de Cidades
+
+Utilize esse serviço para buscar todas as cidades de um determinado estado, passado por parâmetro, onde existem credenciados.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'drugstores-cities/se';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+  {
+    "city": "ARACAJU"
+  }
+]
+```
+
+`GET https://api.meutem.dev/drugstores-cities/[state]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+state | String | Sim | Sigla do estado (ex. BA)
+
+<aside class="warning">
+A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+</aside>
+
+## Busca de Bairros
+
+Utilize esse serviço para buscar todOs os bairros de uma determinada cidade, passada por parâmetro, onde existem credenciados.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'drugstores-neighborhoods/se/aracaju';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+  {
+    "neighborhood": "CENTRO"
+  },
+  {
+    "neighborhood": "JARDINS"
+  },
+  {
+    "neighborhood": "SANTO ANTÔNIO"
+  },
+  {
+    "neighborhood": "SÃO JOSÉ"
+  },
+  {
+    "neighborhood": "TREZE DE JULHO"
+  }
+]
+```
+
+`GET https://api.meutem.dev/drugstores-neighborhoods/[state]/[city]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+state | String | Sim | Sigla do estado (ex. BA)
+city | String | Sim | Nome da cidade
+
+<aside class="warning">
+A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+</aside>
+
 # Example
 
 ## TODO
