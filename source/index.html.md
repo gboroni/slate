@@ -1029,7 +1029,7 @@ Utilize esse serviço para cadastrar um cliente.
 
 `POST https://api.meutem.dev/client?name=[name]&cpf=[cpf]&rg=[rg]&gender=[gender]&birthdate=[birthdate]&channel_id=[channel_id]&other_document=[other_document]&password=[password]&email=[email]&telephone_1=[telephone_1]&telephone_2=[telephone_2]&address=[address]&complement=[complement]&number=[number]&state=[state]&city=[city]&neighborhood=[neighborhood]&postalCode=[postalCode]`
 
-### Parâmetros de URL
+### Parâmetros form-data
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
@@ -1107,7 +1107,7 @@ Utilize esse serviço para atualizar dados de um determinado cliente.
 
 `POST https://api.meutem.dev/client/[id]?name=[name]&cpf=[cpf]&rg=[rg]&gender=[gender]&birthdate=[birthdate]&channel_id=[channel_id]&other_document=[other_document]&password=[password]&email=[email]&telephone_1=[telephone_1]&telephone_2=[telephone_2]&address=[address]&complement=[complement]&number=[number]&state=[state]&city=[city]&neighborhood=[neighborhood]&postalCode=[postalCode]`
 
-### Parâmetros de URL
+### Parâmetros form-data
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
