@@ -440,7 +440,6 @@ return json_decode(Requests::get(API_ENDPOINT . $url, $cabecalhos));
 
 Utilize esse serviço para buscar detalhes de uma determinada farmárcia.
 
-
 ### Requisição HTTP
 
 `GET https://api.meutem.dev/drugstore/[id]`
@@ -796,7 +795,6 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 Utilize esse serviço para buscar detalhes de uma determinado cliente.
 
-
 ### Requisição HTTP
 
 `GET https://api.meutem.dev/client/[id]`
@@ -1024,7 +1022,6 @@ return json_decode(Requests::post(API_ENDPOINT . $url, $cabecalhos, $dados));
 
 Utilize esse serviço para cadastrar um cliente.
 
-
 ### Requisição HTTP
 
 `POST https://api.meutem.dev/client?name=[name]&cpf=[cpf]&rg=[rg]&gender=[gender]&birthdate=[birthdate]&channel_id=[channel_id]&other_document=[other_document]&password=[password]&email=[email]&telephone_1=[telephone_1]&telephone_2=[telephone_2]&address=[address]&complement=[complement]&number=[number]&state=[state]&city=[city]&neighborhood=[neighborhood]&postalCode=[postalCode]`
@@ -1102,7 +1099,6 @@ return json_decode(Requests::post(API_ENDPOINT . $url, $cabecalhos, $dados));
 
 Utilize esse serviço para atualizar dados de um determinado cliente.
 
-
 ### Requisição HTTP
 
 `POST https://api.meutem.dev/client/[id]?name=[name]&cpf=[cpf]&rg=[rg]&gender=[gender]&birthdate=[birthdate]&channel_id=[channel_id]&other_document=[other_document]&password=[password]&email=[email]&telephone_1=[telephone_1]&telephone_2=[telephone_2]&address=[address]&complement=[complement]&number=[number]&state=[state]&city=[city]&neighborhood=[neighborhood]&postalCode=[postalCode]`
@@ -1130,6 +1126,99 @@ channel_id | Number | Não | ID do canal
 other_document | String | Não | TODO: Documentar
 password | String | Não | Senha de acesso ao sistema (caso não informada, 12345678 é a padrão)
 complement | String | Não | Complemento do endereço
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
+## Excluir
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'delete-client/1';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "status": "200"
+}
+```
+
+Utilize esse serviço apagar um determinado cliente da base de dados.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/delete-client/[id]`
+
+## Empresas
+
+## Buscar Todos
+
+Utilize esse serviço para buscar todos os clientes.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'companies/getAll';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+    {
+        "id": "1",
+        "sindicates_id_fk": "1",
+        "cnpj": "99.999.999/9999-99",
+        "name": "Exemplo",
+        "password": "Izq4VEopEdnthWuL6qrznrsmz6kn/CzSHZfQvm1TdtGG1dcuCmZOA0qCVGKin+XVTurxEUuootSKEqQj7pT28A==",
+        "addresses_id_fk": "1",
+        "contact_name": "Exemplo",
+        "contact_telephone": "(99) 9999-9999",
+        "contact_cellphone": "(99) 99999-9999",
+        "contact_email": "exemplo@exemplo.com",
+        "employees": "2",
+        "cards": "2",
+        "status": null,
+        "observations": null,
+        "created_at": "2016-07-14 12:37:41",
+        "updated_at": null,
+        "deleted_at": null
+    },
+    {
+        "id": "2",
+        "sindicates_id_fk": "1",
+        "cnpj": "88.888.888/8888-88",
+        "name": "Exemplo2",
+        "password": "+5ji5RedlPG0wjzSAS5bOWexcdP8OH2KSbWqgK0izhZoq9tzMyCoFncqR9vG1UJShfYmMDPcUIN7ekov++PbMg==",
+        "addresses_id_fk": "2",
+        "contact_name": "CAMILA ALMEIDA",
+        "contact_telephone": "(11) 5666-3181",
+        "contact_cellphone": "(11) 96398-2677",
+        "contact_email": "exemplo2@exemplo.com",
+        "employees": "5",
+        "cards": "5",
+        "status": "em_implantacao",
+        "observations": "Entrei em contato mas a Exemplo responsável pela negociação, está afastada, retornarei o contato",
+        "created_at": "2016-07-26 15:19:29",
+        "updated_at": "2016-08-30 10:38:56",
+        "deleted_at": null
+    }
+]
+```
+
+`GET https://api.meutem.dev/companies/getAll`
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
