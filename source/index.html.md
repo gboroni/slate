@@ -546,28 +546,36 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 ```json
 {
-  "data": [
-    {
-      "DT_RowId": "1",
-      "id": "1",
-      "specialty": "ALERGIA E IMUNOLOGIA",
-      "name": "Exemplo 1",
-      "city": "ARACAJU",
-      "neighborhood": "CENTRO",
-      "state": "SE",
-      "zone": "SE - Capital"
-    },
-    {
-      "DT_RowId": "2",
-      "id": "2",
-      "specialty": "ALERGIA E IMUNOLOGIA",
-      "name": "Exemplo 2",
-      "city": "ARACAJU",
-      "neighborhood": "CENTRO",
-      "state": "SE",
-      "zone": "SE - Capital"
-    }
-  ]
+    "data": [
+        {
+            "DT_RowId": "1",
+            "id": "1",
+            "name": "FARMACIA EXEMPLO",
+            "address": "R. EXEMPLO",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91109890",
+            "longitude": "-37.04995800",
+            "created_at": "2017-10-04 08:00:02"
+        },
+        {
+            "DT_RowId": "2",
+            "id": "2",
+            "name": "FARMACIA EXEMPLO 2",
+            "address": "AV. EXEMPLO 2",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91849890",
+            "longitude": "-37.05105620",
+            "created_at": "2017-10-04 08:00:07"
+        }
+    ]
 }
 ```
 
