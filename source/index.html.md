@@ -1156,7 +1156,7 @@ Utilize esse serviço apagar um determinado cliente da base de dados.
 
 `GET https://api.meutem.dev/delete-client/[id]`
 
-## Empresas
+# Empresas
 
 ## Buscar Todos
 
