@@ -16,24 +16,9 @@ Esse documento tem como finalidade descrever os serviços que compoem a API de S
 
 # Autenticação
 
-A API trabalha apenas com os métodos GET e POST e sua utilização está condicionada a informar uma chave válida, por meio do parâmetro Transaction-key, de 50 caracteres.
+A utilização de alguns serviços está condicionada a informar no cabeçalho da requisição uma chave válida alfanumérica de 50 caracteres válida ppor meio do parâmetro Transaction-key.
 
 `Transaction-key: njRRmvsxpZ******************************s7rbscHNmL`
-
-<aside class="info">
-A API disponibiliza publicamente todas as requisições excetos as relacionadas abaixo:
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-</aside>
-
-
-## POST
 
 # Credenciados
 
