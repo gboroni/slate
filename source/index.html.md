@@ -946,7 +946,7 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 }
 ```
 
-Utilize esse serviço para buscar todos os clientes a partir de uma palavra-chave passada como parâmetro de consulta.
+Utilize esse serviço para buscar um cliente pelo cpf.
 
 ## Busca por Filtro
 
