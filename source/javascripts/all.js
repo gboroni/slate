@@ -3,7 +3,7 @@
 
 
 $(document).ready(function() {
-	$("code").each(function() {
+	$("p > code").each(function() {
 		$(this).html($(this).html().replace(/\[/g, '<b>[').replace(/\]/g, ']</b>'))
 	});
 });

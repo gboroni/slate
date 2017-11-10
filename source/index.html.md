@@ -413,9 +413,11 @@ A utilização desse serviço não requer autenticação
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
+define('API_TRANSACTION_KEY', 'njRRmvsxpZ******************************s7rbscHNmL');
+$cabecalhos = ['Transaction-key' => API_TRANSACTION_KEY];
 $url = 'drugstore/1';
 
-return json_decode(Requests::get(API_ENDPOINT . $url));
+return json_decode(Requests::get(API_ENDPOINT . $url, $cabecalhos));
 ```
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
@@ -460,6 +462,8 @@ A utilização desse serviço requer <a href="#autenticacao">autenticação <i c
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
+define('API_TRANSACTION_KEY', 'njRRmvsxpZ******************************s7rbscHNmL');
+$cabecalhos = ['Transaction-key' => API_TRANSACTION_KEY];
 $parametros = [
                 'state'        => 'se',
                 'city'         => 'aracaju',
@@ -467,7 +471,7 @@ $parametros = [
               ];
 $url = 'drugstores/search-units-filter/20/0?' . http_build_query($parametros);
 
-return json_decode(Requests::get(API_ENDPOINT . $url));
+return json_decode(Requests::get(API_ENDPOINT . $url, $cabecalhos));
 ```
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
@@ -538,9 +542,11 @@ A utilização desse serviço requer <a href="#autenticacao">autenticação <i c
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
+define('API_TRANSACTION_KEY', 'njRRmvsxpZ******************************s7rbscHNmL');
+$cabecalhos = ['Transaction-key' => API_TRANSACTION_KEY];
 $url = 'drugstores/search-units/20/0?parameters=aracaju';
 
-return json_decode(Requests::get(API_ENDPOINT . $url));
+return json_decode(Requests::get(API_ENDPOINT . $url, $cabecalhos));
 ```
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
@@ -613,9 +619,11 @@ Utilize esse serviço para buscar todos os estados onde existem credenciados.
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
+define('API_TRANSACTION_KEY', 'njRRmvsxpZ******************************s7rbscHNmL');
+$cabecalhos = ['Transaction-key' => API_TRANSACTION_KEY];
 $url = 'drugstores-states';
 
-return json_decode(Requests::get(API_ENDPOINT . $url));
+return json_decode(Requests::get(API_ENDPOINT . $url, $cabecalhos));
 ```
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
@@ -653,9 +661,11 @@ Utilize esse serviço para buscar todas as cidades de um determinado estado, pas
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
+define('API_TRANSACTION_KEY', 'njRRmvsxpZ******************************s7rbscHNmL');
+$cabecalhos = ['Transaction-key' => API_TRANSACTION_KEY];
 $url = 'drugstores-cities/se';
 
-return json_decode(Requests::get(API_ENDPOINT . $url));
+return json_decode(Requests::get(API_ENDPOINT . $url, $cabecalhos));
 ```
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
@@ -690,9 +700,11 @@ Utilize esse serviço para buscar todOs os bairros de uma determinada cidade, pa
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
+define('API_TRANSACTION_KEY', 'njRRmvsxpZ******************************s7rbscHNmL');
+$cabecalhos = ['Transaction-key' => API_TRANSACTION_KEY];
 $url = 'drugstores-neighborhoods/se/aracaju';
 
-return json_decode(Requests::get(API_ENDPOINT . $url));
+return json_decode(Requests::get(API_ENDPOINT . $url, $cabecalhos));
 ```
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
