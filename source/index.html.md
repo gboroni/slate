@@ -185,26 +185,22 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
     {
       "DT_RowId": "1",
       "id": "1",
-      "specialty": "AUDIOMETRIA",
-      "name": "EXEMPLO 1",
+      "specialty": "ALERGIA E IMUNOLOGIA",
+      "name": "Exemplo 1",
       "city": "ARACAJU",
-      "neighborhood": "SÃO JOSÉ",
+      "neighborhood": "CENTRO",
       "state": "SE",
-      "zone": "",
-      "latitude": "-10.91892210",
-      "longitude": "-37.05267520"
+      "zone": "SE - Capital"
     },
     {
       "DT_RowId": "2",
       "id": "2",
-      "specialty": "COLONOSCOPIA",
-      "name": "EXEMPLO 2",
+      "specialty": "ALERGIA E IMUNOLOGIA",
+      "name": "Exemplo 2",
       "city": "ARACAJU",
-      "neighborhood": "SÃO JOSÉ",
+      "neighborhood": "CENTRO",
       "state": "SE",
-      "zone": "SE - Capital",
-      "latitude": "-10.91922000",
-      "longitude": "-37.05157170"
+      "zone": "SE - Capital"
     }
   ]
 }
