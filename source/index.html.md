@@ -960,7 +960,7 @@ Utilize esse serviço para buscar um cliente pelo cpf.
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-cpf | String | Sim | O cpf do cliente (no formato ___.___.___-__)
+cpf | String | Sim | O cpf do cliente (no formato 999.999.999-99)
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
