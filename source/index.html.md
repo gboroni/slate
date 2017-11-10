@@ -145,7 +145,7 @@ Utilize esse serviço para buscar todos os credenciados a partir de filtro const
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/health-units/search-units/[limit]/[offset]?specialties=[especialidade_id]&state=[uf]&city=[cidade]&neighborhood=[bairro]`
+`GET https://api.meutem.dev/health-units/search-units-filter/[limit]/[offset]?specialties=[especialidade_id]&state=[uf]&city=[cidade]&neighborhood=[bairro]`
 
 ### Parâmetros de URL
 
@@ -462,7 +462,6 @@ require_once 'libraries/rmccue/requests/libraryparametr/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
 $parametros = [
-                'specialties'  => 1,
                 'state'        => 'se',
                 'city'         => 'aracaju',
                 'neighborhood' => 'centro'
@@ -504,7 +503,7 @@ Utilize esse serviço para buscar todos os credenciados a partir de filtro const
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/drugstores/search-units/[limit]/[offset]?specialties=[especialidade_id]&state=[uf]&city=[cidade]&neighborhood=[bairro]`
+`GET https://api.meutem.dev/drugstores/search-units-filter/[limit]/[offset]?state=[uf]&city=[cidade]&neighborhood=[bairro]`
 
 ### Parâmetros de URL
 
@@ -517,7 +516,6 @@ offset | String | Sim | Offset para a pesquisa
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-especialidade_id | Number | Não | Id da especialidade desejada
 uf | String | Não | Sigla do estado (ex. BA)
 cidade | String | Não | Nome da cidade
 bairro | String | Não | Nome do bairro
@@ -533,7 +531,7 @@ A utilização desse serviço requer <a href="#autenticacao">autenticação <i c
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'drugstores/search-units/20/0?parameters=aracaju';
+$url = 'drugstores/search-units-filter/20/0?parameters=aracaju';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -574,7 +572,7 @@ Utilize esse serviço para buscar todos os credenciados a partir de uma palavra-
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/drugstores/search-units/[limit]/[offset]?parameters=[parameters]`
+`GET https://api.meutem.dev/drugstores/search-units-filter/[limit]/[offset]?parameters=[parameters]`
 
 ### Parâmetros de URL
 
