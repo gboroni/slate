@@ -473,32 +473,40 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 ```json
 {
-  "data": [
-    {
-      "DT_RowId": "1",
-      "id": "1",
-      "specialty": "ALERGIA E IMUNOLOGIA",
-      "name": "Exemplo 1",
-      "city": "ARACAJU",
-      "neighborhood": "CENTRO",
-      "state": "SE",
-      "zone": "SE - Capital"
-    },
-    {
-      "DT_RowId": "2",
-      "id": "2",
-      "specialty": "ALERGIA E IMUNOLOGIA",
-      "name": "Exemplo 2",
-      "city": "ARACAJU",
-      "neighborhood": "CENTRO",
-      "state": "SE",
-      "zone": "SE - Capital"
-    }
-  ]
+    "data": [
+        {
+            "DT_RowId": "1",
+            "id": "1",
+            "name": "FARMACIA EXEMPLO",
+            "address": "R. EXEMPLO",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91109890",
+            "longitude": "-37.04995800",
+            "created_at": "2017-10-04 08:00:02"
+        },
+        {
+            "DT_RowId": "2",
+            "id": "2",
+            "name": "FARMACIA EXEMPLO 2",
+            "address": "AV. EXEMPLO 2",
+            "number": "123",
+            "neighborhood": "CENTRO",
+            "city": "ARACAJU",
+            "state": "SE",
+            "postal_code": "49000000",
+            "latitude": "-10.91849890",
+            "longitude": "-37.05105620",
+            "created_at": "2017-10-04 08:00:07"
+        }
+    ]
 }
 ```
 
-Utilize esse serviço para buscar todos os credenciados a partir de filtro construído.
+Utilize esse serviço para buscar todos as farmácias a partir de filtro construído.
 
 ### Requisição HTTP
 
@@ -530,7 +538,7 @@ A utilização desse serviço requer <a href="#autenticacao">autenticação <i c
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'drugstores/search-units-filter/20/0?parameters=aracaju';
+$url = 'drugstores/search-units/20/0?parameters=aracaju';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -567,11 +575,11 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 }
 ```
 
-Utilize esse serviço para buscar todos os credenciados a partir de uma palavra-chave passada como parâmetro de consulta.
+Utilize esse serviço para buscar todos as farmácias a partir de uma palavra-chave passada como parâmetro de consulta.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/drugstores/search-units-filter/[limit]/[offset]?parameters=[parameters]`
+`GET https://api.meutem.dev/drugstores/search-units/[limit]/[offset]?parameters=[parameters]`
 
 ### Parâmetros de URL
 
@@ -592,7 +600,7 @@ A utilização desse serviço requer <a href="#autenticacao">autenticação <i c
 
 ## Busca de Especialidades
 
-Utilize esse serviço para buscar todas as especialidades dos credenciados cadastrados
+Utilize esse serviço para buscar todas as especialidades as farmácias cadastrados
 
 ### Requisição HTTP
 
