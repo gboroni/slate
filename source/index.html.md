@@ -895,6 +895,10 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 `GET https://api.meutem.dev/get-all-clients`
 
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 ## Busca por CPF
 
 ```php
@@ -947,6 +951,21 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
 
 Utilize esse serviço para buscar um cliente pelo cpf.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/get-client-by-cpf/[cpf]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+cpf | String | Sim | O cpf do cliente (no formato ___.___.___-__)
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 
 ## Busca por Filtro
 
