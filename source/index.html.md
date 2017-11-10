@@ -965,3 +965,82 @@ cpf | String | Sim | O cpf do cliente (no formato 999.999.999-99)
 <aside class="success">
 A utilização desse serviço não requer autenticação
 </aside>
+
+## Cadastrar
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'client';
+$cabecalhos = ['Accept' => 'application/json'];
+$dados = [
+    'name' => 'Exemplo';
+    'cpf' => '123.456.789-09';
+    'rg' => '123456';
+    'gender' => 'masculino';
+    'birthdate' => '1900-01-01';
+    'channel_id' => 1;
+    'other_document' => null;
+    'password' => '123456';
+    'email' => 'exemplo@exemplo.com';
+    'telephone_1' => '(99) 99999-9999)';
+    'telephone_2' => null;
+    'address' => 'Rua Exemplo';
+    'complement' => null;
+    'number' => 123;
+    'state' => 'se';
+    'city' => 'aracaju';
+    'neighborhood' => 'centro';
+    'postalCode' => '49000-000"';
+];
+
+return json_decode(Requests::post(API_ENDPOINT . $url, $cabecalhos, $dados));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "result": {
+        "client_id": 1,
+        "client_name": "Exemplo"
+    },
+    "status": "200"
+}
+```
+
+Utilize esse serviço para cadastrar um cliente.
+
+
+### Requisição HTTP
+
+`POST https://api.meutem.dev/client?name=[name]&cpf=[cpf]&rg=[rg]&gender=[gender]&birthdate=[birthdate]&channel_id=[channel_id]&other_document=[other_document]&password=[password]&email=[email]&telephone_1=[telephone_1]&telephone_2=[telephone_2]&address=[address]&complement=[complement]&number=[number]&state=[state]&city=[city]&neighborhood=[neighborhood]&postalCode=[postalCode]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+name | String | Sim | Nome do cliente
+address | String | Sim | Logradouro
+number | String | Sim | Número do endereço
+state | String | Sim | Sigla do estado (ex. BA)
+city | String | Sim | Nome da cidade
+neighborhood | String | Sim | Nome do bairro
+postalCode | String | Sim | CEP
+email | String | Sim | Endereço de e-mail
+telephone_1 | String | Sim | Telefone 1 (no formato (99) 99999-9999 ou (99) 9999-9999)
+telephone_2 | String | Não | Telefone 2  (no formato (99) 99999-9999 ou (99) 9999-9999)
+cpf | String | Não | CPF (no formato 999.999.999-99)
+rg | String | Não | RG
+gender | String | Não | Sexo (informar 'masculino' ou 'feminino')
+birthdate | String | Não | Data de nascimento (no formato 9999-99-99)
+channel_id | String | Não | Id do canal
+other_document | String | Não | TODO: Documentar
+password | String | Não | Senha de acesso ao sistema (Caso não informada, 12345678 é a padrão)
+complement | String | Não | Complemento do endereço
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
