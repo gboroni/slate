@@ -105,6 +105,10 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 id | Number | Sim | O ID do credenciado a ser obtido
 
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 ## Busca por Filtro
 
 
@@ -174,6 +178,10 @@ uf | String | Não | Sigla do estado (ex. BA)
 cidade | String | Não | Nome da cidade
 bairro | String | Não | Nome do bairro
 
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 ## Busca por Palavra-chave
 
 ```php
@@ -237,6 +245,10 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 parameters | String | Sim | Palavra-chave que filtra nome, especialidade, bairro, cidade, uf ou zona
 
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 ## Busca de Especialidades
 
 Utilize esse serviço para buscar todas as especialidades dos credenciados cadastrados
@@ -277,6 +289,10 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 `GET https://api.meutem.dev/health-units-specialties`
 
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 ## Busca de Estados
 
 Utilize esse serviço para buscar todos os estados onde existem credenciados.
@@ -313,6 +329,10 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 `GET https://api.meutem.dev/health-units-states`
 
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 ## Busca de Cidades
 
 Utilize esse serviço para buscar todas as cidades de um determinado estado, passado por parâmetro, onde existem credenciados.
@@ -345,6 +365,10 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 uf | String | Sim | Sigla do estado (ex. BA)
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
 
 ## Busca de Bairros
 
@@ -391,6 +415,10 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 uf | String | Sim | Sigla do estado (ex. BA)
 cidade | String | Sim | Nome da cidade
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
 
 # Farmácias
 
@@ -773,7 +801,9 @@ Parâmetro | Tipo | Obrigatório | Descrição
 uf | String | Sim | Sigla do estado (ex. BA)
 cidade | String | Sim | Nome da cidade
 
-
+<aside class="warning">
+A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+</aside>
 
 # Example
 
