@@ -960,7 +960,7 @@ Utilize esse serviço para buscar um cliente pelo cpf.
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-cpf | String | Sim | O cpf do cliente (no formato 999.999.999-99)
+cpf | String | Sim | O cpf do cliente (formato 999.999.999-99)
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
@@ -1029,15 +1029,15 @@ city | String | Sim | Nome da cidade
 neighborhood | String | Sim | Nome do bairro
 postalCode | String | Sim | CEP
 email | String | Sim | Endereço de e-mail
-telephone_1 | String | Sim | Telefone 1 (no formato (99) 99999-9999 ou (99) 9999-9999)
-telephone_2 | String | Não | Telefone 2  (no formato (99) 99999-9999 ou (99) 9999-9999)
-cpf | String | Não | CPF (no formato 999.999.999-99)
+telephone_1 | String | Sim | Telefone 1 (formato (99) 99999-9999 ou (99) 9999-9999)
+telephone_2 | String | Não | Telefone 2  (formato (99) 99999-9999 ou (99) 9999-9999)
+cpf | String | Não | CPF (formato 999.999.999-99)
 rg | String | Não | RG
 gender | String | Não | Sexo (informar 'masculino' ou 'feminino')
-birthdate | String | Não | Data de nascimento (no formato 9999-99-99)
+birthdate | String | Não | Data de nascimento (formato 9999-99-99)
 channel_id | String | Não | Id do canal
 other_document | String | Não | TODO: Documentar
-password | String | Não | Senha de acesso ao sistema (Caso não informada, 12345678 é a padrão)
+password | String | Não | Senha de acesso ao sistema (caso não informada, 12345678 é a padrão)
 complement | String | Não | Complemento do endereço
 
 <aside class="success">
