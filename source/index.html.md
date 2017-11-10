@@ -144,7 +144,7 @@ Utilize esse serviço para buscar todos os credenciados a partir de filtro const
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/health-units/search-units-filter/[limit]/[offset]?specialties=[especialidade_id]&state=[uf]&city=[cidade]&neighborhood=[bairro]`
+`GET https://api.meutem.dev/health-units/search-units-filter/[limit]/[offset]?specialties=[specialties]&state=[state]&city=[city]&neighborhood=[neighborhood]`
 
 ### Parâmetros de URL
 
@@ -157,10 +157,10 @@ offset | String | Sim | Offset para a pesquisa
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-especialidade_id | Number | Não | Id da especialidade desejada
-uf | String | Não | Sigla do estado (ex. BA)
-cidade | String | Não | Nome da cidade
-bairro | String | Não | Nome do bairro
+specialties | Number | Não | Id da especialidade desejada
+state | String | Não | Sigla do estado (ex. BA)
+city | String | Não | Nome da cidade
+neighborhood | String | Não | Nome do bairro
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
@@ -185,22 +185,26 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
     {
       "DT_RowId": "1",
       "id": "1",
-      "specialty": "ALERGIA E IMUNOLOGIA",
-      "name": "Exemplo 1",
+      "specialty": "AUDIOMETRIA",
+      "name": "EXEMPLO 1",
       "city": "ARACAJU",
-      "neighborhood": "CENTRO",
+      "neighborhood": "SÃO JOSÉ",
       "state": "SE",
-      "zone": "SE - Capital"
+      "zone": "",
+      "latitude": "-10.91892210",
+      "longitude": "-37.05267520"
     },
     {
       "DT_RowId": "2",
       "id": "2",
-      "specialty": "ALERGIA E IMUNOLOGIA",
-      "name": "Exemplo 2",
+      "specialty": "COLONOSCOPIA",
+      "name": "EXEMPLO 2",
       "city": "ARACAJU",
-      "neighborhood": "CENTRO",
+      "neighborhood": "SÃO JOSÉ",
       "state": "SE",
-      "zone": "SE - Capital"
+      "zone": "SE - Capital",
+      "latitude": "-10.91922000",
+      "longitude": "-37.05157170"
     }
   ]
 }
@@ -338,13 +342,13 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 ]
 ```
 
-`GET https://api.meutem.dev/health-units-cities/[uf]`
+`GET https://api.meutem.dev/health-units-cities/[state]`
 
 ### Parâmetros de URL
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-uf | String | Sim | Sigla do estado (ex. BA)
+state | String | Sim | Sigla do estado (ex. BA)
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
@@ -387,14 +391,14 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 ]
 ```
 
-`GET https://api.meutem.dev/health-units-neighborhoods/[uf]/[cidade]`
+`GET https://api.meutem.dev/health-units-neighborhoods/[state]/[city]`
 
 ### Parâmetros de URL
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-uf | String | Sim | Sigla do estado (ex. BA)
-cidade | String | Sim | Nome da cidade
+state | String | Sim | Sigla do estado (ex. BA)
+city | String | Sim | Nome da cidade
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
@@ -506,7 +510,7 @@ Utilize esse serviço para buscar todos as farmácias a partir de filtro constru
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/drugstores/search-units-filter/[limit]/[offset]?state=[uf]&city=[cidade]&neighborhood=[bairro]`
+`GET https://api.meutem.dev/drugstores/search-units-filter/[limit]/[offset]?state=[state]&city=[city]&neighborhood=[neighborhood]`
 
 ### Parâmetros de URL
 
@@ -519,9 +523,9 @@ offset | String | Sim | Offset para a pesquisa
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-uf | String | Não | Sigla do estado (ex. BA)
-cidade | String | Não | Nome da cidade
-bairro | String | Não | Nome do bairro
+state | String | Não | Sigla do estado (ex. BA)
+city | String | Não | Nome da cidade
+neighborhood | String | Não | Nome do bairro
 
 <aside class="warning">
 A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
@@ -546,26 +550,22 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
     {
       "DT_RowId": "1",
       "id": "1",
-      "specialty": "AUDIOMETRIA",
-      "name": "EXEMPLO 1",
+      "specialty": "ALERGIA E IMUNOLOGIA",
+      "name": "Exemplo 1",
       "city": "ARACAJU",
-      "neighborhood": "SÃO JOSÉ",
+      "neighborhood": "CENTRO",
       "state": "SE",
-      "zone": "",
-      "latitude": "-10.91892210",
-      "longitude": "-37.05267520"
+      "zone": "SE - Capital"
     },
     {
       "DT_RowId": "2",
       "id": "2",
-      "specialty": "COLONOSCOPIA",
-      "name": "EXEMPLO 2",
+      "specialty": "ALERGIA E IMUNOLOGIA",
+      "name": "Exemplo 2",
       "city": "ARACAJU",
-      "neighborhood": "SÃO JOSÉ",
+      "neighborhood": "CENTRO",
       "state": "SE",
-      "zone": "SE - Capital",
-      "latitude": "-10.91922000",
-      "longitude": "-37.05157170"
+      "zone": "SE - Capital"
     }
   ]
 }
@@ -588,7 +588,7 @@ offset | String | Sim | Offset para a pesquisa
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-parameters | String | Sim | Palavra-chave que filtra nome, especialidade, bairro, cidade, uf ou zona
+parameters | String | Sim | Palavra-chave que filtra nome, bairro, cidade, uf ou zona
 
 <aside class="warning">
 A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
@@ -703,13 +703,13 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 ]
 ```
 
-`GET https://api.meutem.dev/drugstores-cities/[uf]`
+`GET https://api.meutem.dev/drugstores-cities/[state]`
 
 ### Parâmetros de URL
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-uf | String | Sim | Sigla do estado (ex. BA)
+state | String | Sim | Sigla do estado (ex. BA)
 
 <aside class="warning">
 A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
@@ -752,14 +752,14 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 ]
 ```
 
-`GET https://api.meutem.dev/drugstores-neighborhoods/[uf]/[cidade]`
+`GET https://api.meutem.dev/drugstores-neighborhoods/[state]/[city]`
 
 ### Parâmetros de URL
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-uf | String | Sim | Sigla do estado (ex. BA)
-cidade | String | Sim | Nome da cidade
+state | String | Sim | Sigla do estado (ex. BA)
+city | String | Sim | Nome da cidade
 
 <aside class="warning">
 A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
