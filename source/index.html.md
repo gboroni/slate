@@ -16,7 +16,7 @@ Esse documento tem como finalidade descrever os serviços que compoem a API de S
 
 # Autenticação
 
-A utilização de alguns serviços está condicionada a informar no cabeçalho da requisição uma chave válida alfanumérica de 50 caracteres válida ppor meio do parâmetro Transaction-key.
+A utilização de alguns serviços está condicionada a informar no cabeçalho HTTP uma chave válida alfanumérica de 50 caracteres válida por meio do parâmetro Transaction-key.
 
 `Transaction-key: njRRmvsxpZ******************************s7rbscHNmL`
 
@@ -795,8 +795,8 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 id | Number | Sim | O ID do cliente a ser obtido
 
-<aside class="warning">
-A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+<aside class="success">
+A utilização desse serviço não requer autenticação
 </aside>
 
 ## Buscar Todos
@@ -895,6 +895,59 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 `GET https://api.meutem.dev/get-all-clients`
 
+## Busca por CPF
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'get-client-by-cpf/123.456.789-09';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "id": "1",
+    "cpf": "123.456.789-09",
+    "name": "Exemplo",
+    "email": "exemplo@exemplo.com.br",
+    "rg": "123456",
+    "other_document": null,
+    "birthdate": "1900-01-01",
+    "telephone_1": "(99) 99999-9999",
+    "telephone_2": "(99) 9999-9999",
+    "gender": "feminino",
+    "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
+    "addresses_id_fk": "55",
+    "has_access": "0",
+    "forgot_token": null,
+    "imported": null,
+    "created_at": "2015-05-04 14:54:46",
+    "deleted_at": null,
+    "updated_at": null,
+    "card": {
+        "id": "1",
+        "client_name": "EXEMPLO",
+        "product_name": "ANUAL",
+        "card_number": "9999999999999999",
+        "card_validator": null,
+        "channel_name": "AVANTE",
+        "created_at": "2015-05-04 02:54:46",
+        "updated_at": "2015-05-04 03:20:30",
+        "is_pre_print": "0",
+        "status": "CAPTURED",
+        "permalink": "",
+        "channels_id_fk": null,
+        "cards_number_channel_name": null
+    }
+}
+```
+
+Utilize esse serviço para buscar todos os clientes a partir de uma palavra-chave passada como parâmetro de consulta.
+
 ## Busca por Filtro
 
 ```php
@@ -969,8 +1022,8 @@ state | String | Não | Sigla do estado (ex. BA)
 city | String | Não | Nome da cidade
 neighborhood | String | Não | Nome do bairro
 
-<aside class="warning">
-A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+<aside class="success">
+A utilização desse serviço não requer autenticação
 </aside>
 
 ## Busca por Palavra-chave
@@ -1040,8 +1093,8 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 parameters | String | Sim | Palavra-chave que filtra nome, bairro, cidade, uf ou zona
 
-<aside class="warning">
-A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+<aside class="success">
+A utilização desse serviço não requer autenticação
 </aside>
 
 ## Busca de Estados
@@ -1080,8 +1133,8 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 
 `GET https://api.meutem.dev/drugstores-states`
 
-<aside class="warning">
-A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+<aside class="success">
+A utilização desse serviço não requer autenticação
 </aside>
 
 ## Busca de Cidades
@@ -1117,8 +1170,8 @@ Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
 state | String | Sim | Sigla do estado (ex. BA)
 
-<aside class="warning">
-A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+<aside class="success">
+A utilização desse serviço não requer autenticação
 </aside>
 
 ## Busca de Bairros
@@ -1167,8 +1220,8 @@ Parâmetro | Tipo | Obrigatório | Descrição
 state | String | Sim | Sigla do estado (ex. BA)
 city | String | Sim | Nome da cidade
 
-<aside class="warning">
-A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
+<aside class="success">
+A utilização desse serviço não requer autenticação
 </aside>
 
 # Example
