@@ -602,50 +602,6 @@ parameters | String | Sim | Palavra-chave que filtra nome, bairro, cidade, uf ou
 A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
 </aside>
 
-## Busca de Especialidades
-
-Utilize esse serviço para buscar todas as especialidades as farmácias cadastrados
-
-### Requisição HTTP
-
-```php
-<?php
-require_once 'libraries/rmccue/requests/library/Requests.php';
-
-define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'drugstores-specialties';
-
-return json_decode(Requests::get(API_ENDPOINT . $url));
-```
-> O comando acima retorna um JSON estruturado conforme exemplo:
-
-```json
-[
-  {
-    "name": "ACUIDADE VISUAL",
-    "id": "545"
-  },
-  {
-    "name": "ACUPUNTURA",
-    "id": "21"
-  },
-  {
-    "name": "VIDEOLAPAROSCOPIA",
-    "id": "470"
-  },
-  {
-    "name": "VIDEOLARINGOSCOPIA",
-    "id": "391"
-  }
-]
-```
-
-`GET https://api.meutem.dev/drugstores-specialties`
-
-<aside class="warning">
-A utilização desse serviço requer <a href="#autenticacao">autenticação <i class="fa fa-external-link"></i></a>
-</aside>
-
 ## Busca de Estados
 
 Utilize esse serviço para buscar todos os estados onde existem credenciados.
