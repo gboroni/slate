@@ -96,10 +96,9 @@ A utilização desse serviço não requer autenticação
 
 ## Busca por Filtro
 
-
 ```php
 <?php
-require_once 'libraries/rmccue/requests/libraryparametr/Requests.php';
+require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
 $parametros = [
@@ -458,7 +457,7 @@ A utilização desse serviço requer <a href="#autenticacao">autenticação <i c
 
 ```php
 <?php
-require_once 'libraries/rmccue/requests/libraryparametr/Requests.php';
+require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
 $parametros = [
