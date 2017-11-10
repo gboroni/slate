@@ -414,7 +414,7 @@ A utilização desse serviço não requer autenticação
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'health-unit/1';
+$url = 'drugstore/1';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -423,43 +423,17 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 ```json
 {
   "id": "1",
-  "type": "CLINICA",
-  "name": "CLINICA EXEMPLO",
-  "cpf_cnpj": "99999999999999",
-  "telephone_1": "(99) 9999-9999",
-  "telephone_2": "(99) 99999-9999",
-  "email": "CLINICAEXEMPLO@GMAIL.COM",
-  "rede": "TEM",
-  "is_active": "1",
-  "created_at": "2017-06-29 09:32:31",
-  "updated_at": "2017-07-05 09:32:30",
-  "deleted_at": null,
-  "postal_code": "99999-999",
-  "latitude": null,
-  "longitude": null,
-  "specialties": [
-    {
-      "id": "3",
-      "name": "DERMATOLOGIA",
-      "created_at": "2016-02-15 01:29:14",
-      "updated_at": null,
-      "deleted_At": null
-    },
-    {
-      "id": "5",
-      "name": "CLINICA MEDICA",
-      "created_at": "2016-02-15 01:29:14",
-      "updated_at": null,
-      "deleted_At": null
-    },
-    {
-      "id": "6",
-      "name": "GASTROENTEROLOGIA",
-      "created_at": "2016-02-15 01:29:14",
-      "updated_at": null,
-      "deleted_At": null
-    }
-  ]
+  "name": "Exemplo",
+  "address": "AV. EXEMPLO",
+  "number": "123",
+  "neighborhood": "CENTRO",
+  "city": "MACEIO",
+  "state": "AL",
+  "postal_code": "57055000",
+  "telephone": "(99) 9999-9999",
+  "latitude": "-9.64430510",
+  "longitude": "-35.73990940",
+  "created_at": "2017-10-04 08:00:02"
 }
 ```
 
@@ -468,7 +442,7 @@ Utilize esse serviço para buscar detalhes de uma determinada farmárcia.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/drugstores/[id]`
+`GET https://api.meutem.dev/drugstore/[id]`
 
 ### Parâmetros de URL
 
