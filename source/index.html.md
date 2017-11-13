@@ -1986,6 +1986,35 @@ complement | String | Não | Complemento do endereço
 A utilização desse serviço não requer autenticação
 </aside>
 
+## Ativar
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'activate-product/1';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "status": "201"
+}
+```
+
+Utilize esse serviço para marcar um determinado produto como ativo.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/activate-product/[id]`
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 ## Excluir
 
 ```php
