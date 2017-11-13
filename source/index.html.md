@@ -1277,7 +1277,7 @@ A utilização desse serviço não requer autenticação
 
 ## Buscar Todos
 
-Utilize esse serviço para buscar todos os clientes.
+Utilize esse serviço para buscar todos os cartões.
 
 ### Requisição HTTP
 
@@ -1286,7 +1286,8 @@ Utilize esse serviço para buscar todos os clientes.
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'get-all-clients';
+$parametros = ['userId' => 1];
+$url = 'get-all-cards?' . http_build_query($parametros);
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -1296,80 +1297,40 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 [
     {
         "id": "1",
-        "cpf": "123.456.789-09",
-        "name": "Exemplo",
-        "email": "exemplo@exemplo.com.br",
-        "rg": "123456",
-        "other_document": null,
-        "birthdate": "1900-01-01",
-        "telephone_1": "(99) 99999-9999",
-        "telephone_2": "(99) 9999-9999",
-        "gender": "feminino",
-        "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
-        "addresses_id_fk": "55",
-        "has_access": "0",
-        "forgot_token": null,
-        "imported": null,
-        "created_at": "2015-05-04 14:54:46",
-        "deleted_at": null,
-        "updated_at": null,
-        "card": {
-            "id": "1",
-            "client_name": "EXEMPLO",
-            "product_name": "ANUAL",
-            "card_number": "9999999999999999",
-            "card_validator": null,
-            "channel_name": "AVANTE",
-            "created_at": "2015-05-04 02:54:46",
-            "updated_at": "2015-05-04 03:20:30",
-            "is_pre_print": "0",
-            "status": "CAPTURED",
-            "permalink": "",
-            "channels_id_fk": null,
-            "cards_number_channel_name": null
-        },
-        "channel": null
+        "client_name": "Exemplo",
+        "product_name": "ANUAL",
+        "card_number": "9999999999999999",
+        "card_validator": null,
+        "channel_name": "AVANTE",
+        "created_at": "2015-05-04 11:35:50",
+        "updated_at": "2015-05-08 05:26:12",
+        "is_pre_print": "0",
+        "subscription_status": "CAPTURED",
+        "sent_at": null
     },
     {
         "id": "2",
-        "cpf": "987.654.321-09",
-        "name": "Exemplo2",
-        "email": "exemplo2@exemplo.com.br",
-        "rg": "456789",
-        "other_document": null,
-        "birthdate": "1900-01-01",
-        "telephone_1": "(99) 99999-9999",
-        "telephone_2": "(99) 9999-9999",
-        "gender": "masculino",
-        "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
-        "addresses_id_fk": "55",
-        "has_access": "0",
-        "forgot_token": null,
-        "imported": null,
-        "created_at": "2015-05-04 14:54:46",
-        "deleted_at": null,
-        "updated_at": null,
-        "card": {
-            "id": "1",
-            "client_name": "EXEMPLO2",
-            "product_name": "ANUAL",
-            "card_number": "8888888888888888",
-            "card_validator": null,
-            "channel_name": "AVANTE",
-            "created_at": "2015-05-04 02:54:46",
-            "updated_at": "2015-05-04 03:20:30",
-            "is_pre_print": "0",
-            "status": "CAPTURED",
-            "permalink": "",
-            "channels_id_fk": null,
-            "cards_number_channel_name": null
-        },
-        "channel": null
+        "client_name": "Exemplo2",
+        "product_name": "ANUAL",
+        "card_number": null,
+        "card_validator": null,
+        "channel_name": "AVANTE",
+        "created_at": "2015-05-04 11:35:50",
+        "updated_at": "2015-05-08 05:26:12",
+        "is_pre_print": "0",
+        "subscription_status": "REFUSED",
+        "sent_at": null
     }
 ]
 ```
 
-`GET https://api.meutem.dev/get-all-clients`
+`GET https://api.meutem.dev/get-all-cards?userId=[userId]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+userId | Number | Sim | O usuário que está solicitando. Se o usuário não for administrador, só poderá obter os cartões do canal a que pertence
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
