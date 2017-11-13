@@ -1445,7 +1445,8 @@ return json_decode(Requests::post(API_ENDPOINT . $url, $cabecalhos, $dados));
 
 ```json
 {
-    "status": "200"
+    "status": "201"
+    "message": "Cartão atualizado com sucesso."
 }
 ```
 
