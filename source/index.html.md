@@ -2000,9 +2000,9 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
 ```json
-{
-    "status": "200"
-}
+[
+    "ok"
+]
 ```
 
 Utilize esse serviço apagar um determinado produto da base de dados.
