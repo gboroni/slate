@@ -1156,6 +1156,10 @@ Utilize esse serviço apagar um determinado cliente da base de dados.
 
 `GET https://api.meutem.dev/delete-client/[id]`
 
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 # Empresas
 
 ## Buscar Todos
@@ -1224,3 +1228,400 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 A utilização desse serviço não requer autenticação
 </aside>
 
+# Cartões
+
+## Obter Detalhes
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'card/1';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "id": "1",
+    "client_name": "Exemplo",
+    "product_name": "ANUAL",
+    "card_number": "9999999999999999",
+    "card_validator": null,
+    "channel_name": "AVANTE",
+    "created_at": "2015-05-04 11:35:50",
+    "updated_at": "2015-05-08 05:26:12",
+    "is_pre_print": "0",
+    "subscription_status": "CAPTURED",
+    "sent_at": null
+}
+```
+
+Utilize esse serviço para buscar detalhes de uma determinado cliente.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/card/[id]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+id | Number | Sim | O ID do cliente a ser obtido
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
+## Buscar Todos
+
+Utilize esse serviço para buscar todos os clientes.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'get-all-clients';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+    {
+        "id": "1",
+        "cpf": "123.456.789-09",
+        "name": "Exemplo",
+        "email": "exemplo@exemplo.com.br",
+        "rg": "123456",
+        "other_document": null,
+        "birthdate": "1900-01-01",
+        "telephone_1": "(99) 99999-9999",
+        "telephone_2": "(99) 9999-9999",
+        "gender": "feminino",
+        "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
+        "addresses_id_fk": "55",
+        "has_access": "0",
+        "forgot_token": null,
+        "imported": null,
+        "created_at": "2015-05-04 14:54:46",
+        "deleted_at": null,
+        "updated_at": null,
+        "card": {
+            "id": "1",
+            "client_name": "EXEMPLO",
+            "product_name": "ANUAL",
+            "card_number": "9999999999999999",
+            "card_validator": null,
+            "channel_name": "AVANTE",
+            "created_at": "2015-05-04 02:54:46",
+            "updated_at": "2015-05-04 03:20:30",
+            "is_pre_print": "0",
+            "status": "CAPTURED",
+            "permalink": "",
+            "channels_id_fk": null,
+            "cards_number_channel_name": null
+        },
+        "channel": null
+    },
+    {
+        "id": "2",
+        "cpf": "987.654.321-09",
+        "name": "Exemplo2",
+        "email": "exemplo2@exemplo.com.br",
+        "rg": "456789",
+        "other_document": null,
+        "birthdate": "1900-01-01",
+        "telephone_1": "(99) 99999-9999",
+        "telephone_2": "(99) 9999-9999",
+        "gender": "masculino",
+        "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
+        "addresses_id_fk": "55",
+        "has_access": "0",
+        "forgot_token": null,
+        "imported": null,
+        "created_at": "2015-05-04 14:54:46",
+        "deleted_at": null,
+        "updated_at": null,
+        "card": {
+            "id": "1",
+            "client_name": "EXEMPLO2",
+            "product_name": "ANUAL",
+            "card_number": "8888888888888888",
+            "card_validator": null,
+            "channel_name": "AVANTE",
+            "created_at": "2015-05-04 02:54:46",
+            "updated_at": "2015-05-04 03:20:30",
+            "is_pre_print": "0",
+            "status": "CAPTURED",
+            "permalink": "",
+            "channels_id_fk": null,
+            "cards_number_channel_name": null
+        },
+        "channel": null
+    }
+]
+```
+
+`GET https://api.meutem.dev/get-all-clients`
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
+## Busca por CPF
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'get-card-by-cpf/123.456.789-09';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "id": "1",
+    "cpf": "123.456.789-09",
+    "name": "Exemplo",
+    "email": "exemplo@exemplo.com.br",
+    "rg": "123456",
+    "other_document": null,
+    "birthdate": "1900-01-01",
+    "telephone_1": "(99) 99999-9999",
+    "telephone_2": "(99) 9999-9999",
+    "gender": "feminino",
+    "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
+    "addresses_id_fk": "55",
+    "has_access": "0",
+    "forgot_token": null,
+    "imported": null,
+    "created_at": "2015-05-04 14:54:46",
+    "deleted_at": null,
+    "updated_at": null,
+    "card": {
+        "id": "1",
+        "client_name": "EXEMPLO",
+        "product_name": "ANUAL",
+        "card_number": "9999999999999999",
+        "card_validator": null,
+        "channel_name": "AVANTE",
+        "created_at": "2015-05-04 02:54:46",
+        "updated_at": "2015-05-04 03:20:30",
+        "is_pre_print": "0",
+        "status": "CAPTURED",
+        "permalink": "",
+        "channels_id_fk": null,
+        "cards_number_channel_name": null
+    }
+}
+```
+
+Utilize esse serviço para buscar um cliente pelo cpf.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/get-card-by-cpf/[cpf]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+cpf | String | Sim | O cpf do cliente (formato 999.999.999-99)
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
+## Cadastrar
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'card';
+$cabecalhos = ['Accept' => 'application/json'];
+$dados = [
+    'name' => 'Exemplo';
+    'cpf' => '123.456.789-09';
+    'rg' => '123456';
+    'gender' => 'masculino';
+    'birthdate' => '1900-01-01';
+    'channel_id' => 1;
+    'other_document' => null;
+    'password' => '123456';
+    'email' => 'exemplo@exemplo.com';
+    'telephone_1' => '(99) 99999-9999)';
+    'telephone_2' => null;
+    'address' => 'Rua Exemplo';
+    'complement' => null;
+    'number' => 123;
+    'state' => 'se';
+    'city' => 'aracaju';
+    'neighborhood' => 'centro';
+    'postalCode' => '49000-000"';
+];
+
+return json_decode(Requests::post(API_ENDPOINT . $url, $cabecalhos, $dados));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "result": {
+        "client_id": 1,
+        "client_name": "Exemplo"
+    },
+    "status": "200"
+}
+```
+
+Utilize esse serviço para cadastrar um cliente.
+
+### Requisição HTTP
+
+`POST https://api.meutem.dev/card?name=[name]&cpf=[cpf]&rg=[rg]&gender=[gender]&birthdate=[birthdate]&channel_id=[channel_id]&other_document=[other_document]&password=[password]&email=[email]&telephone_1=[telephone_1]&telephone_2=[telephone_2]&address=[address]&complement=[complement]&number=[number]&state=[state]&city=[city]&neighborhood=[neighborhood]&postalCode=[postalCode]`
+
+### Parâmetros form-data
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+name | String | Sim | Nome do cliente
+address | String | Sim | Logradouro
+number | String | Sim | Número do endereço
+state | String | Sim | Sigla do estado (ex. BA)
+city | String | Sim | Nome da cidade
+neighborhood | String | Sim | Nome do bairro
+postalCode | String | Sim | CEP
+email | String | Sim | Endereço de e-mail
+telephone_1 | String | Sim | Telefone 1 (formato (99) 99999-9999 ou (99) 9999-9999)
+telephone_2 | String | Não | Telefone 2  (formato (99) 99999-9999 ou (99) 9999-9999)
+cpf | String | Não | CPF (formato 999.999.999-99)
+rg | String | Não | RG
+gender | String | Não | Sexo (informar 'masculino' ou 'feminino')
+birthdate | String | Não | Data de nascimento (formato 9999-99-99)
+channel_id | Number | Não | ID do canal
+other_document | String | Não | TODO: Documentar
+password | String | Não | Senha de acesso ao sistema (caso não informada, 12345678 é a padrão)
+complement | String | Não | Complemento do endereço
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
+## Atualizar
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'card/1';
+$cabecalhos = ['Accept' => 'application/json'];
+$dados = [
+    'name' => 'Exemplo';
+    'cpf' => '123.456.789-09';
+    'rg' => '123456';
+    'gender' => 'masculino';
+    'birthdate' => '1900-01-01';
+    'channel_id' => 1;
+    'other_document' => null;
+    'password' => '123456';
+    'email' => 'exemplo@exemplo.com';
+    'telephone_1' => '(99) 99999-9999)';
+    'telephone_2' => null;
+    'address' => 'Rua Exemplo';
+    'complement' => null;
+    'number' => 123;
+    'state' => 'se';
+    'city' => 'aracaju';
+    'neighborhood' => 'centro';
+    'postalCode' => '49000-000"';
+];
+
+return json_decode(Requests::post(API_ENDPOINT . $url, $cabecalhos, $dados));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "result": {
+        "client_id": 1,
+        "client_name": "Exemplo"
+    },
+    "status": "200"
+}
+```
+
+Utilize esse serviço para atualizar dados de um determinado cliente.
+
+### Requisição HTTP
+
+`POST https://api.meutem.dev/card/[id]?name=[name]&cpf=[cpf]&rg=[rg]&gender=[gender]&birthdate=[birthdate]&channel_id=[channel_id]&other_document=[other_document]&password=[password]&email=[email]&telephone_1=[telephone_1]&telephone_2=[telephone_2]&address=[address]&complement=[complement]&number=[number]&state=[state]&city=[city]&neighborhood=[neighborhood]&postalCode=[postalCode]`
+
+### Parâmetros form-data
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+id | Number | Sim | ID do cliente
+name | String | Não | Nome do cliente
+address | String | Não | Logradouro
+number | String | Não | Número do endereço
+state | String | Não | Sigla do estado (ex. BA)
+city | String | Não | Nome da cidade
+neighborhood | String | Não | Nome do bairro
+postalCode | String | Não | CEP
+email | String | Não | Endereço de e-mail
+telephone_1 | String | Não | Telefone 1 (formato (99) 99999-9999 ou (99) 9999-9999)
+telephone_2 | String | Não | Telefone 2  (formato (99) 99999-9999 ou (99) 9999-9999)
+cpf | String | Não | CPF (formato 999.999.999-99)
+rg | String | Não | RG
+gender | String | Não | Sexo (informar 'masculino' ou 'feminino')
+birthdate | String | Não | Data de nascimento (formato 9999-99-99)
+channel_id | Number | Não | ID do canal
+other_document | String | Não | TODO: Documentar
+password | String | Não | Senha de acesso ao sistema (caso não informada, 12345678 é a padrão)
+complement | String | Não | Complemento do endereço
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
+## Excluir
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'delete-card/1';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+{
+    "status": "200"
+}
+```
+
+Utilize esse serviço apagar um determinado cliente da base de dados.
+
+### Requisição HTTP
+
+`GET https://api.meutem.dev/delete-card/[id]`
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
