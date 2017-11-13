@@ -1369,13 +1369,13 @@ Utilize esse serviço para buscar o cartão de determinado cliente.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/get-cards-by-client/[clientId]`
+`GET https://api.meutem.dev/get-cards-by-client/[id]`
 
 ### Parâmetros de URL
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-clientId | Number | Sim | O ID do cliente
+id | Number | Sim | O ID do cliente
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
@@ -1652,6 +1652,117 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 <aside class="success">
 A utilização desse serviço não requer autenticação
 </aside>
+
+## Buscar por Usuário
+
+Utilize esse serviço para buscar todos os produtos de um determinado usuário.
+
+### Requisição HTTP
+
+```php
+<?php
+require_once 'libraries/rmccue/requests/library/Requests.php';
+
+define('API_ENDPOINT', 'http://api.meutem.dev/');
+$url = 'get-all-products-by-user/1';
+
+return json_decode(Requests::get(API_ENDPOINT . $url));
+```
+> O comando acima retorna um JSON estruturado conforme exemplo:
+
+```json
+[
+    {
+        "id": "1",
+        "channels_id_fk": "13",
+        "name": "ANUAL",
+        "payment_method": "credito",
+        "max_installment": "0",
+        "cycle": "anual",
+        "onix_code": "3066",
+        "value": "100.00",
+        "bonus": "0.00",
+        "is_pre_print": "0",
+        "description": "EXEMPLO",
+        "details": "EXEMPLO",
+        "is_active": "1",
+        "is_sold_internet": "0",
+        "name_on_internet": "",
+        "min_quantity": "0",
+        "max_quantity": "999999999",
+        "card_src": null,
+        "card_title": null,
+        "has_drugstores": "1",
+        "has_odonto": "1",
+        "has_family": "1",
+        "img_1": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo.png",
+        "img_2": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo2.png",
+        "img_3": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo3.png",
+        "img_4": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo4.png",
+        "variable_tax": null,
+        "created_at": "2015-05-03 10:14:00",
+        "updated_at": "2016-09-13 06:07:06",
+        "deleted_at": null,
+        "channel_name": "AVANTE",
+        "channel_id": "13",
+        "img_1_name": "exemplo.png",
+        "img_2_name": "exemplo2.png",
+        "img_3_name": "exemplo3.png",
+        "img_4_name": "exemplo4.png"
+    },
+    {
+        "id": "2",
+        "channels_id_fk": "13",
+        "name": "ANUAL",
+        "payment_method": "credito",
+        "max_installment": "0",
+        "cycle": "anual",
+        "onix_code": "3066",
+        "value": "100.00",
+        "bonus": "0.00",
+        "is_pre_print": "0",
+        "description": "EXEMPLO",
+        "details": "EXEMPLO",
+        "is_active": "1",
+        "is_sold_internet": "0",
+        "name_on_internet": "",
+        "min_quantity": "0",
+        "max_quantity": "999999999",
+        "card_src": null,
+        "card_title": null,
+        "has_drugstores": "1",
+        "has_odonto": "1",
+        "has_family": "1",
+        "img_1": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo.png",
+        "img_2": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo2.png",
+        "img_3": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo3.png",
+        "img_4": "https://s3-sa-east-1.amazonaws.com/dev.media.meutem/products/exemplo4.png",
+        "variable_tax": null,
+        "created_at": "2015-05-03 10:14:00",
+        "updated_at": "2016-09-13 06:07:06",
+        "deleted_at": null,
+        "channel_name": "AVANTE",
+        "channel_id": "13",
+        "img_1_name": "exemplo.png",
+        "img_2_name": "exemplo2.png",
+        "img_3_name": "exemplo3.png",
+        "img_4_name": "exemplo4.png"
+    }
+]
+```
+
+`GET https://api.meutem.dev/get-all-products-by-user/[id]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+id | Number | Sim | O ID do usuário
+
+<aside class="success">
+A utilização desse serviço não requer autenticação
+</aside>
+
 
 ## Busca por CPF
 
