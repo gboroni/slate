@@ -1388,7 +1388,7 @@ A utilização desse serviço não requer autenticação
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'card/1';
+$url = 'card';
 $cabecalhos = ['Accept' => 'application/json'];
 $dados = [
     'card_id'                => 1
@@ -1411,7 +1411,7 @@ TODO: Documentar
 
 ### Requisição HTTP
 
-`POST https://api.meutem.dev/card/[id]
+`POST https://api.meutem.dev/card`
 
 ### Parâmetros form-data
 
@@ -1426,14 +1426,14 @@ updated_by_users_id_fk | Number | Não | ID do usuário que fez a atualização
 A utilização desse serviço não requer autenticação
 </aside>
 
-## Excluir
+## Marcar como enviado
 
 ```php
 <?php
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'delete-card/1';
+$url = 'mark-card-as-sent/1';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -1445,11 +1445,17 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 }
 ```
 
-Utilize esse serviço apagar um determinado cartão da base de dados.
+Utilize esse serviço para marcar um determinado cartão como enviado.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/delete-card/[id]`
+`GET https://api.meutem.dev/mark-card-as-sent/[id]`
+
+### Parâmetros de URL
+
+Parâmetro | Tipo | Obrigatório | Descrição
+--------- | ---- | ----------- | ---------
+id | Number | Sim | O ID do cartão
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
