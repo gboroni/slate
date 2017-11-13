@@ -1433,9 +1433,13 @@ A utilização desse serviço não requer autenticação
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'mark-card-as-sent/1';
+$url = 'mark-card-as-sent';
+$cabecalhos = ['Accept' => 'application/json'];
+$dados = [
+    'card_id'                => 1
+];
 
-return json_decode(Requests::get(API_ENDPOINT . $url));
+return json_decode(Requests::post(API_ENDPOINT . $url, $cabecalhos, $dados));
 ```
 > O comando acima retorna um JSON estruturado conforme exemplo:
 
@@ -1449,13 +1453,13 @@ Utilize esse serviço para marcar um determinado cartão como enviado.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/mark-card-as-sent/[id]`
+`POST https://api.meutem.dev/mark-card-as-sent`
 
-### Parâmetros de URL
+### Parâmetros form-data
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-id | Number | Sim | O ID do cartão
+card_id | Number | Sim | O ID do cartão
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
