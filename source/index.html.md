@@ -1336,14 +1336,14 @@ userId | Number | Sim | O usuário que está solicitando. Se o usuário não for
 A utilização desse serviço não requer autenticação
 </aside>
 
-## Busca por CPF
+## Busca por Cliente
 
 ```php
 <?php
 require_once 'libraries/rmccue/requests/library/Requests.php';
 
 define('API_ENDPOINT', 'http://api.meutem.dev/');
-$url = 'get-card-by-cpf/123.456.789-09';
+$url = 'get-cards-by-client/1';
 
 return json_decode(Requests::get(API_ENDPOINT . $url));
 ```
@@ -1352,38 +1352,16 @@ return json_decode(Requests::get(API_ENDPOINT . $url));
 ```json
 {
     "id": "1",
-    "cpf": "123.456.789-09",
-    "name": "Exemplo",
-    "email": "exemplo@exemplo.com.br",
-    "rg": "123456",
-    "other_document": null,
-    "birthdate": "1900-01-01",
-    "telephone_1": "(99) 99999-9999",
-    "telephone_2": "(99) 9999-9999",
-    "gender": "feminino",
-    "password": "27e6MhtVo1OoqT4z6De/AjONQ6nSAzDxVtJrVWGl2akPGbUfpnAte8vVfgV809LGvqCU73NA74TKQljg0Sv/nQ==",
-    "addresses_id_fk": "55",
-    "has_access": "0",
-    "forgot_token": null,
-    "imported": null,
-    "created_at": "2015-05-04 14:54:46",
-    "deleted_at": null,
-    "updated_at": null,
-    "card": {
-        "id": "1",
-        "client_name": "EXEMPLO",
-        "product_name": "ANUAL",
-        "card_number": "9999999999999999",
-        "card_validator": null,
-        "channel_name": "AVANTE",
-        "created_at": "2015-05-04 02:54:46",
-        "updated_at": "2015-05-04 03:20:30",
-        "is_pre_print": "0",
-        "status": "CAPTURED",
-        "permalink": "",
-        "channels_id_fk": null,
-        "cards_number_channel_name": null
-    }
+    "client_name": "Exemplo",
+    "product_name": "ANUAL",
+    "card_number": "9999999999999999",
+    "card_validator": null,
+    "channel_name": "AVANTE",
+    "created_at": "2015-05-04 11:35:50",
+    "updated_at": "2015-05-08 05:26:12",
+    "is_pre_print": "0",
+    "subscription_status": "CAPTURED",
+    "sent_at": null
 }
 ```
 
@@ -1391,13 +1369,13 @@ Utilize esse serviço para buscar um cliente pelo cpf.
 
 ### Requisição HTTP
 
-`GET https://api.meutem.dev/get-card-by-cpf/[cpf]`
+`GET https://api.meutem.dev/get-cards-by-client/[clientId]`
 
 ### Parâmetros de URL
 
 Parâmetro | Tipo | Obrigatório | Descrição
 --------- | ---- | ----------- | ---------
-cpf | String | Sim | O cpf do cliente (formato 999.999.999-99)
+clientId | Number | Sim | O ID do cliente
 
 <aside class="success">
 A utilização desse serviço não requer autenticação
